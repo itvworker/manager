@@ -28,6 +28,7 @@ module.exports = {
     'space-before-function-paren':'off',
     'semi': 'off',
     'no-undef':'off',
-    'space-infix-ops':'off'
+    'space-infix-ops':'off',
+    'no-unused-vars':'off'
   }
 }

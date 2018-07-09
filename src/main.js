@@ -7,11 +7,12 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import Schema from './schema/index'
 import echarts from 'echarts'
+import Validate from './dir/validate'
 global.Schema = Schema;
-
 Vue.config.productionTip = false
 Vue.prototype.$echarts = echarts
 Vue.use(ElementUI)
+Vue.use(Validate)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
