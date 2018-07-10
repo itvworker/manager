@@ -1,0 +1,55 @@
+<template>
+  <el-container style="height:100%">
+  <ui-menu></ui-menu>
+  <el-container class="is-vertical warpper">
+    <ui-header>Header</ui-header>
+    <router-view/>
+  </el-container>
+</el-container>
+  <!-- <el-container style="height:100%;">
+    <ui-menu></ui-menu>
+    <el-container>
+       <ui-header></ui-header>
+       <router-view/>
+     </el-container>
+  </el-container> -->
+</template>
+<style lang="less">
+
+
+</style>
+<script>
+import UiMenu from '@/view/nav/nav';
+import UiHeader from '@/view/header/header';
+var schema = new Schema({
+  name: {
+    require: true,
+    rule: 'phone'
+  }
+})
+export default {
+  name: 'index',
+  components: {
+    UiMenu,
+    UiHeader
+  },
+  data() {
+    return {
+      model: {
+        name: 'web',
+        content: 'code'
+      }
+    }
+  },
+  watch: {
+    input(news, olds) {
+      console.log(news);
+    }
+  },
+  methods: {
+    submit() {
+
+    }
+  }
+}
+</script>
