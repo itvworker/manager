@@ -35,16 +35,34 @@
   layout="prev, pager, next"
   :total="1000" @current-change="lose" >
 </el-pagination>
-<el-input v-model="sub.name" validate="name" placeholder="请输入内容"></el-input>
+<el-form :model="sub" status-icon :rules="rule" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+  <el-form-item label="手机号码：" prop="name">
+    <el-input type="text" v-model="sub.name"  placeholder="请输入内容"></el-input>
+  </el-form-item>
+  <el-form-item label="电子邮件：" prop="email">
+    <el-input type="text" v-model="sub.email"  placeholder="请输入内容"></el-input>
+  </el-form-item>
+</el-form>
  </el-main>
 </template>
 
 <script>
 var schema = new Schema({
   name: {
-    rule: 'phone'
+    rule: ['require', 'phone'],
+    message: ['电话是必需的', '电话号码格式错误'],
+    trigger: ['blur', 'change']
+  },
+  email: {
+    rule: ['require', 'email'],
+    message: ['邮箱是必须', '邮箱格式错误'],
+    trigger: ['blur', 'change']
   }
 })
+
+var valt = function(rule, value, callback) {
+  callback(new Error('请再次输入密码'));
+}
 export default {
   data() {
     return {
@@ -68,9 +86,14 @@ export default {
       }
       ],
       sub: {
-        name: 'web'
-      }
+        name: 'web',
+        email: 'xie'
+      },
+      rule: schema
     }
+  },
+  mounted() {
+
   },
   methods: {
     del(index, id) {
