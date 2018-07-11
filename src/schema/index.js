@@ -3,7 +3,6 @@ class Schema {
     let key=Object.keys(obj);
     var rule = {};
     for (let i of key) {
-
       if (this.type(obj[i]['rule'])==='array') {
         rule[i] = this.arrRule(obj[i]);
       }
